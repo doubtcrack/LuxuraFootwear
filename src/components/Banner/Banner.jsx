@@ -6,6 +6,30 @@ import Banner2 from './banner-2.png'
 import Banner3 from './banner-3.png'
 import Banner4 from './banner-4.png'
 
+// Temprory data for banner
+const bannerData = [
+  {
+    id:1,
+    img: Banner1,
+    link:''
+  },
+  {
+    id:2,
+    img: Banner2,
+    link:''
+  },
+  {
+    id:3,
+    img: Banner3,
+    link:''
+  },
+  {
+    id:4,
+    img: Banner4,
+    link:''
+  }
+]
+
 const responsive = {
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
@@ -39,10 +63,11 @@ const Banner = () => {
           arrows={true}
           showDots={true}
         >
-          <img src={Banner1} alt="" />
-          <img src={Banner2} alt="" />
-          <img src={Banner3} alt="" />
-          <img src={Banner4} alt="" />
+          {
+            bannerData.map((item,index) => {
+              return <img key={index} src={item.img} alt=""/>
+            })
+          }
         </Carousel>
       </div>
 
