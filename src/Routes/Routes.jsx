@@ -1,20 +1,31 @@
-import React from 'react'
-import { BrowserRouter,Routes,Route } from 'react-router-dom'
-import Header from '../components/Header/Header'
-import Home from '../pages/Home'
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Header from '../components/Header/Header';
+import Home from '../pages/Home';
+import Dashboard from '../pages/Dashboard/Dashboard';
+import AdminLogin from '../pages/Dashboard/AdminLogin';
 
 const Routess = () => {
   return (
-    <>
-      <BrowserRouter>
-        <Header/>
-        <Routes>
-          <Route path="/" element={<Home/>}/>
-        </Routes>
+    <BrowserRouter>
+      <Routes>
+        {/* Public routes (with Header) */}
+        <Route
+          path="/"
+          element={
+            <>
+              <Header />
+              <Home />
+            </>
+          }
+        />
 
-      </BrowserRouter>
-    </>
-  )
-}
+        {/* Admin routes (without Header) */}
+        <Route path="/admin" element={<AdminLogin />} />
+        <Route path="/admin/dashboard" element={<Dashboard />} />
+      </Routes>
+    </BrowserRouter>
+  );
+};
 
-export default Routess
+export default Routess;
