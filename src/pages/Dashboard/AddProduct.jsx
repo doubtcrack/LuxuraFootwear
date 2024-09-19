@@ -4,15 +4,15 @@ import axios from 'axios';
 
 const AddProduct = () => {
   const [formData, setFormData] = useState({
-    slug: '',
-    title: '',
+    slug: 'title',
+    title: 'Title',
     productLabel1: '',
     productLabel2: '',
-    productLabels: [],
-    price: '',
+    productLabels: ['label1', 'label2'],
+    price: 20,
     description: '',
     reviews: '',
-    images: []
+    images: ['https://contents.mediadecathlon.com/p1985522/2e55fd5a52b5304b959738d33fd1f053/p1985522.jpg','https://contents.mediadecathlon.com/p1985522/2e55fd5a52b5304b959738d33fd1f053/p1985522.jpg']
   });
 
   console.log(formData);
@@ -49,11 +49,12 @@ const AddProduct = () => {
     formDataToSend.append('description', formData.description);
     formDataToSend.append('reviews', formData.reviews);
 
+    console.log(formData)
     try {
       // Send form data using axios POST
-      const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/products`, formDataToSend, {
+      const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/products`, formData, {
         headers: {
-          'Content-Type': 'multipart/form-data' // Required for file uploads
+          'Content-Type': 'application/json' // Required for file uploads
         }
       });
 
