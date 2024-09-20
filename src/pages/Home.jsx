@@ -99,7 +99,7 @@ const Home = () => {
         </div> */}
 
         {/* Home Page carousel */}
-        <div className="my-5">
+        {/* <div className="my-5">
           <Carousel
             swipeable={true}
             draggable={true}
@@ -127,7 +127,7 @@ const Home = () => {
               })
             }
           </Carousel>
-        </div>
+        </div> */}
 
         {/* New Slider here */}
         <Swiper
