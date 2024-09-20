@@ -4,6 +4,7 @@ import Header from '../components/Header/Header';
 import Home from '../pages/Home';
 import Dashboard from '../pages/Dashboard/Dashboard';
 import AdminLogin from '../pages/Dashboard/AdminLogin';
+import Footer from '../components/Footer/Footer';
 
 const Routess = () => {
   return (
@@ -16,6 +17,7 @@ const Routess = () => {
             <>
               <Header />
               <Home />
+              <Footer/>
             </>
           }
         />
