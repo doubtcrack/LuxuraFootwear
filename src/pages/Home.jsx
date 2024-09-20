@@ -8,7 +8,12 @@ import img3 from '../components/ProductCard/2.png'
 import img4 from '../components/ProductCard/2.png'
 import Carousel from 'react-multi-carousel'
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper/modules';
 import 'swiper/css';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
 
 const dummyData = [
   {
@@ -50,28 +55,40 @@ const dummyData = [
     price: '$ 35',
     label1: 'Casual',
     label2: 'Street'
+  },
+  {
+    id: 5,
+    img: img4,
+    title: 'Luxura White Low-Top Sneakers - Minimalist Street Style',
+    desc: 'Elevate your street style with Luxura’s White Low-Top Sneakers. These minimalist sneakers are designed for all-day wear with a durable sole and versatile look to match any outfit.',
+    reviews: '4.93 (5120 Reviews)',
+    price: '$ 35',
+    label1: 'Casual',
+    label2: 'Street'
+  },
+  {
+    id: 6,
+    img: img4,
+    title: 'Luxura White Low-Top Sneakers - Minimalist Street Style',
+    desc: 'Elevate your street style with Luxura’s White Low-Top Sneakers. These minimalist sneakers are designed for all-day wear with a durable sole and versatile look to match any outfit.',
+    reviews: '4.93 (5120 Reviews)',
+    price: '$ 35',
+    label1: 'Casual',
+    label2: 'Street'
+  },
+  {
+    id: 7,
+    img: img4,
+    title: 'Luxura White Low-Top Sneakers - Minimalist Street Style',
+    desc: 'Elevate your street style with Luxura’s White Low-Top Sneakers. These minimalist sneakers are designed for all-day wear with a durable sole and versatile look to match any outfit.',
+    reviews: '4.93 (5120 Reviews)',
+    price: '$ 35',
+    label1: 'Casual',
+    label2: 'Street'
   }
 ]
 
 // Product carousel responsive
-const responsiveHome = {
-  desktop: {
-    breakpoint: { max: 3000, min: 1024 },
-    items: 4,
-    slidesToSlide: 1 // optional, default to 1.
-  },
-  tablet: {
-    breakpoint: { max: 1024, min: 464 },
-    items: 3,
-    slidesToSlide: 1 // optional, default to 1.
-  },
-  mobile: {
-    breakpoint: { max: 464, min: 0 },
-    items: 1,
-    slidesToSlide: 1, // optional, default to 1.
-    partialVisibilityGutter: 50
-  }
-};
 
 const Home = () => {
   return (
@@ -130,54 +147,58 @@ const Home = () => {
         </div> */}
 
         {/* New Slider here */}
-        <Swiper
-          spaceBetween={50}
-          slidesPerView={3}
-          onSlideChange={() => console.log('slide change')}
-          onSwiper={(swiper) => console.log(swiper)}
-          breakpoints={{
-            350: {
-              slidesPerView: 1,
-              spaceBetween: 7
-            },
-            550: {
-              slidesPerView: 2,
-              spaceBetween: 10
-            },
-            667: {
-              slidesPerView: 2,
-              spaceBetween: 10
-            },
-            992: {
-              slidesPerView: 3,
-              spaceBetween: 10
-            },
-            1200: {
-              slidesPerView: 4
-            }
-          }}
-        >
-          {
-            dummyData.map((item,index) => {
-              return (
-                <SwiperSlide>
-                  <Productcard
-                    key={index}
-                    productImage={item.img}
-                    productLabel1={item.label1}
-                    productLabel2={item.label2}
-                    productTitle={item.title}
-                    productDescription={item.desc}
-                    productReviews={item.reviews}
-                    productPrice={item.price}
-                  />
-                </SwiperSlide>
-              )
-            })
-          }
-          <SwiperSlide>
-          </SwiperSlide>
-        </Swiper>
+        <div className="w-full mx-auto p-4">
+
+          <Swiper
+            modules={[Navigation, Pagination, Autoplay]}
+            slidesPerView={4}
+            spaceBetween={20}
+            navigation={true}
+            speed={1000}
+            className="mySwiper"
+            loop={false} // Make sure loop is disabled
+            breakpoints={{
+              350: {
+                slidesPerView: 1,
+                spaceBetween: 7
+              },
+              550: {
+                slidesPerView: 2,
+                spaceBetween: 10
+              },
+              667: {
+                slidesPerView: 2,
+                spaceBetween: 10
+              },
+              992: {
+                slidesPerView: 3,
+                spaceBetween: 10
+              },
+              1200: {
+                slidesPerView: 4
+              }
+            }}
+            autoplay={{
+              delay: 4000,
+              disableOnInteraction: true,
+              stopOnLastSlide: true // Autoplay stops at the last slide
+            }}
+          >
+            {dummyData.map((item, index) => (
+              <SwiperSlide key={index}>
+                <Productcard
+                  productImage={item.img}
+                  productLabel1={item.label1}
+                  productLabel2={item.label2}
+                  productTitle={item.title}
+                  productDescription={item.desc}
+                  productReviews={item.reviews}
+                  productPrice={item.price}
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
 
       </div>
 

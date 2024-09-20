@@ -60,7 +60,7 @@ const Banner = () => {
           autoPlaySpeed={4000}
           removeArrowOnDeviceType={['tablet', 'mobile']}
           infinite={true}
-          arrows={true}
+          arrows={false}
           showDots={true}
         >
           {
