@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 import React from 'react'
 import Banner from '../components/Banner/Banner'
 import Productcard from '../components/ProductCard/Productcard'
@@ -6,6 +7,8 @@ import img2 from '../components/ProductCard/2.png'
 import img3 from '../components/ProductCard/2.png'
 import img4 from '../components/ProductCard/2.png'
 import Carousel from 'react-multi-carousel'
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
 
 const dummyData = [
   {
@@ -96,7 +99,7 @@ const Home = () => {
         </div> */}
 
         {/* Home Page carousel */}
-        <div className="my-5">
+        {/* <div className="my-5">
           <Carousel
             swipeable={true}
             draggable={true}
@@ -124,7 +127,57 @@ const Home = () => {
               })
             }
           </Carousel>
-        </div>
+        </div> */}
+
+        {/* New Slider here */}
+        <Swiper
+          spaceBetween={50}
+          slidesPerView={3}
+          onSlideChange={() => console.log('slide change')}
+          onSwiper={(swiper) => console.log(swiper)}
+          breakpoints={{
+            350: {
+              slidesPerView: 1,
+              spaceBetween: 7
+            },
+            550: {
+              slidesPerView: 2,
+              spaceBetween: 10
+            },
+            667: {
+              slidesPerView: 2,
+              spaceBetween: 10
+            },
+            992: {
+              slidesPerView: 3,
+              spaceBetween: 10
+            },
+            1200: {
+              slidesPerView: 4
+            }
+          }}
+        >
+          {
+            dummyData.map((item,index) => {
+              return (
+                <SwiperSlide>
+                  <Productcard
+                    key={index}
+                    productImage={item.img}
+                    productLabel1={item.label1}
+                    productLabel2={item.label2}
+                    productTitle={item.title}
+                    productDescription={item.desc}
+                    productReviews={item.reviews}
+                    productPrice={item.price}
+                  />
+                </SwiperSlide>
+              )
+            })
+          }
+          <SwiperSlide>
+          </SwiperSlide>
+        </Swiper>
 
       </div>
 
