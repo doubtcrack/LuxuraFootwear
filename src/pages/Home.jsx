@@ -14,6 +14,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import OfferBanner from '../components/OffersBanner/OfferBanner'
 
 const dummyData = [
   {
@@ -198,6 +199,12 @@ const Home = () => {
               </SwiperSlide>
             ))}
           </Swiper>
+        </div>
+
+        <div className="w-full mx-auto p-4 my-5">
+          <h1 className="text-center font-semibold text-[22px] md:text-[32px]">Grab Month end Sale</h1>
+          <p className="text-center text-[10px] sm:text-[20px] text-[#585757]">Get big discounts on month end sneaker sale</p>
+          <OfferBanner/>
         </div>
 
       </div>
