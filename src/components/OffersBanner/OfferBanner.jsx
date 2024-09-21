@@ -3,6 +3,9 @@ import React from 'react'
 import img1 from './Black Green Grunge Custom Shoes Medium Banner.png'
 import img2 from './Pink White Bold Shoes Product Promotion Landscape Banner.png'
 import img3 from './Shoes sale (Banner (Landscape)).png'
+import img4 from './Blue and White Modern Shoes Promotion Banner.png'
+import img5 from './Green Black Gradient Shoes Sale Banner.png'
+import img6 from './Red Green Graffiti Shoes Discount Banner.png'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper/modules';
 import 'swiper/css';
@@ -30,17 +33,17 @@ const Offersdata = [
   },
   {
     id:4,
-    image:img1,
+    image:img4,
     redirectTo:'/'
   },
   {
     id:5,
-    image:img2,
+    image:img5,
     redirectTo:'/'
   },
   {
     id:6,
-    image:img3,
+    image:img6,
     redirectTo:'/'
   }
 ]
