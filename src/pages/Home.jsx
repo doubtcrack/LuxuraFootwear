@@ -207,6 +207,60 @@ const Home = () => {
           <OfferBanner/>
         </div>
 
+        <div className="w-full mx-auto p-4 my-5">
+          <h1 className="text-center font-semibold text-[22px] md:text-[32px]">Shop New Launches</h1>
+          <p className="text-center text-[10px] sm:text-[20px] text-[#585757]">Grab the newly launch sneakers</p>
+          <Swiper
+            modules={[Navigation, Pagination, Autoplay]}
+            slidesPerView={4}
+            spaceBetween={20}
+            navigation={true}
+            speed={1000}
+            className="mySwiper"
+            loop={false} // Make sure loop is disabled
+            breakpoints={{
+              350: {
+                slidesPerView: 1,
+                spaceBetween: 7
+              },
+              550: {
+                slidesPerView: 2,
+                spaceBetween: 10
+              },
+              667: {
+                slidesPerView: 2,
+                spaceBetween: 10
+              },
+              992: {
+                slidesPerView: 3,
+                spaceBetween: 10
+              },
+              1200: {
+                slidesPerView: 4
+              }
+            }}
+            autoplay={{
+              delay: 4000,
+              disableOnInteraction: true,
+              stopOnLastSlide: true // Autoplay stops at the last slide
+            }}
+          >
+            {dummyData.map((item, index) => (
+              <SwiperSlide key={index}>
+                <Productcard
+                  productImage={item.img}
+                  productLabel1={item.label1}
+                  productLabel2={item.label2}
+                  productTitle={item.title}
+                  productDescription={item.desc}
+                  productReviews={item.reviews}
+                  productPrice={item.price}
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+
       </div>
 
     </>
