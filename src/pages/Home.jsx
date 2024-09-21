@@ -9,12 +9,14 @@ import img4 from '../components/ProductCard/2.png'
 import Carousel from 'react-multi-carousel'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper/modules';
+import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import 'swiper/css';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import OfferBanner from '../components/OffersBanner/OfferBanner'
+import Categories from '../components/Categories/Categories'
 
 const dummyData = [
   {
@@ -94,7 +96,7 @@ const dummyData = [
 const Home = () => {
   return (
     <>
-      <div className="max-w-[1540px] w-full mx-auto">
+      <div className="max-w-[1540px] w-full mx-auto mt-[60px] lg:mt-[80px]">
         <Banner />
         <h1 className=" text-center mt-4 text-[22px] font-semibold sm:text-[32px]">Top Rated Sneakers</h1>
         <p className="text-center text-[10px] sm:text-[20px] text-[#585757]">Get upto 20% Off on Mens Casual Sneakers</p>
@@ -259,6 +261,12 @@ const Home = () => {
               </SwiperSlide>
             ))}
           </Swiper>
+        </div>
+
+        <div className="w-full mx-auto p-4 my-5">
+          <h1 className="text-center font-semibold text-[22px] md:text-[32px]">Shop by Categories</h1>
+          <p className="text-center text-[10px] sm:text-[20px] text-[#585757]">Shop your Favourite sneakers with categories</p>
+          <Categories/>
         </div>
 
       </div>
