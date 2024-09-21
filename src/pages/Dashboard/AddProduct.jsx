@@ -51,9 +51,9 @@ const AddProduct = () => {
 
     try {
       // Send form data using axios POST
-      const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/products`, formDataToSend, {
+      const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/products`, formData, {
         headers: {
-          'Content-Type': 'multipart/form-data' // Required for file uploads
+          'Content-Type': 'application/json' // Required for file uploads
         }
       });
 
