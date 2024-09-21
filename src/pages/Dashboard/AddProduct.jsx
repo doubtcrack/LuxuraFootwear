@@ -16,7 +16,6 @@ const AddProduct = () => {
   });
 
   console.log(formData);
-  console.log('hello world');
 
   // Handle input change
   const handleChange = (e) => {
