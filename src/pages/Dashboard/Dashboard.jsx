@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import AddProduct from './AddProduct';
 import ShowProducts from './ShowProducts';
+import CategoryForm from './CategoryForm';
 
 const Dashboard = () => {
   const [activeTab, setActiveTab] = useState('add-product');
@@ -18,10 +19,16 @@ const Dashboard = () => {
             Add Product
           </li>
           <li
-            className={`p-4 cursor-pointer ${activeTab === 'show-orders' ? 'bg-gray-700' : 'bg-gray-800'} hover:bg-gray-600`}
+            className={`p-4 cursor-pointer ${activeTab === 'show-product' ? 'bg-gray-700' : 'bg-gray-800'} hover:bg-gray-600`}
             onClick={() => setActiveTab('show-product')}
           >
             Show All Products
+          </li>
+          <li
+            className={`p-4 cursor-pointer ${activeTab === 'add-category' ? 'bg-gray-700' : 'bg-gray-800'} hover:bg-gray-600`}
+            onClick={() => setActiveTab('add-category')}
+          >
+            Add Categories
           </li>
         </ul>
       </aside>
@@ -38,6 +45,12 @@ const Dashboard = () => {
         {activeTab === 'show-product' && (
           <div>
             <ShowProducts/>
+          </div>
+        )}
+
+        {activeTab === 'add-category' && (
+          <div>
+            <CategoryForm/>
           </div>
         )}
       </main>
