@@ -3,6 +3,8 @@ import React from 'react'
 import Pic1 from './2.png'
 import { FaStar } from 'react-icons/fa';
 import { FaHeart } from 'react-icons/fa';
+import { FaRegHeart } from 'react-icons/fa';
+import { FaRegShareFromSquare } from 'react-icons/fa6';
 
 const Productcard = ({productImage,productLabel1,productLabel2,productTitle,productDescription,productReview,productPrice,productReviews}) => {
 //Function to show only 26 words
@@ -47,7 +49,8 @@ const Productcard = ({productImage,productLabel1,productLabel2,productTitle,prod
           <span className="text-[19px] font-semibold">{productPrice}</span>
           <div className="flex gap-5 items-center">
             <button className="px-1 sm:px-2 text-[10px] sm:text-[12px] py-1 rounded-md bg-white">Add to Cart</button>
-            <FaHeart size={25} color="red"/>
+            <FaRegHeart className=" absolute top-[25px] lg:right-[65px] right-[25px]" size={25} color="black"/>
+            <FaRegShareFromSquare className=" absolute top-[75px] lg:right-[65px] right-[25px]" size={25} color="black"/>
           </div>
         </div>
       </div>

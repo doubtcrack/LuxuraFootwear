@@ -38,7 +38,7 @@ const AddProduct = () => {
 
     try {
       const res = await axios.post(
-        'http://localhost:8000/api/products',
+        'https://luxura-api.vercel.app/api/product',
         formData,
         {
           headers: {

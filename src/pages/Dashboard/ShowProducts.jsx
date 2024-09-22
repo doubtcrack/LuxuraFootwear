@@ -29,6 +29,7 @@ const ShowProducts = () => {
         console.log('Error Fetching Product' + error)
       }
     }
+    fetchAllProducts()
   },[])
 
   const handleToggle = (productId) => {
