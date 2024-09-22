@@ -6,7 +6,14 @@ import img1 from '../components/ProductCard/2.png'
 import img2 from '../components/ProductCard/2.png'
 import img3 from '../components/ProductCard/2.png'
 import img4 from '../components/ProductCard/2.png'
-import Carousel from 'react-multi-carousel'
+import shoes from '../assests/shoes.png'
+import heels from '../assests/heels.png'
+import slipper from '../assests/slippers.png'
+import sandals from '../assests/sandals.png'
+import crocs from '../assests/crocs.png'
+import boots from '../assests/boots.png'
+import loafer from '../assests/loafers.png'
+// import Carousel from 'react-multi-carousel'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper/modules';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
@@ -20,14 +27,14 @@ import Categories from '../components/Categories/Categories'
 
 const dummyData = [
   {
-    id:1,
+    id: 1,
     img: img1,
-    title:'Luxura Classic Red High-Top Sneakers - Unisex Casual Canvas Shoes',
-    desc:'Step up your style with Luxuras Classic Red High-Top Sneakers. Crafted with durable canvas and a comfortable rubber sole, these unisex shoes offer timeless design and all-day comfort.',
-    reviews:'4.95 (4443 Reviews)',
-    price:'$ 24',
-    label1:'Trendy',
-    label2:'Unisex'
+    title: 'Luxura Classic Red High-Top Sneakers - Unisex Casual Canvas Shoes',
+    desc: 'Step up your style with Luxuras Classic Red High-Top Sneakers. Crafted with durable canvas and a comfortable rubber sole, these unisex shoes offer timeless design and all-day comfort.',
+    reviews: '4.95 (4443 Reviews)',
+    price: '$ 24',
+    label1: 'Trendy',
+    label2: 'Unisex'
   },
   {
     id: 2,
@@ -91,12 +98,76 @@ const dummyData = [
   }
 ]
 
+const Category = [
+  {
+    id: 1,
+    img: shoes, // Add the image path
+    title: 'Sneakers',
+    slug: '/sneakers'
+  },
+  {
+    id: 2,
+    img: boots,
+    title: 'Boots',
+    slug: '/boots'
+  },
+  {
+    id: 3,
+    img: loafer,
+    title: 'Loafers',
+    slug: '/loafers'
+  },
+  {
+    id: 4,
+    img: sandals,
+    title: 'Sandals',
+    slug: '/sandals'
+  },
+  {
+    id: 5,
+    img: heels,
+    title: 'Heels',
+    slug: '/heels'
+  },
+  {
+    id: 6,
+    img: slipper,
+    title: 'Slippers',
+    slug: '/slippers'
+  },
+  {
+    id: 7,
+    img: crocs,
+    title: 'Crocs',
+    slug: '/crocs'
+  }
+];
+
 // Product carousel responsive
 
 const Home = () => {
   return (
     <>
       <div className="max-w-[1540px] w-full mx-auto mt-[60px] lg:mt-[80px]">
+        {/* Only show category tab on mobile */}
+        <div className=" flex overflow-scroll lg:hidden no-scrollbar gap-6 p-2">
+          {Category.map((item) => (
+            <div key={item.id} className="flex flex-col items-center">
+              {/* Image in a rounded circle */}
+              <div style={{ border: '1px solid #bcbaba' }} className="rounded-full shadow-lg p-1 overflow-hidden w-10 h-10 sm:w-28 sm:h-28 lg:w-32 lg:h-32">
+                <img
+                  src={item.img}
+                  alt={item.title}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              {/* Title below the circle */}
+              <p className="mt-2 text-center text-[12px] lg:text-base font-medium">
+                {item.title}
+              </p>
+            </div>
+          ))}
+        </div>
         <Banner />
         <h1 className=" text-center mt-4 text-[22px] font-semibold sm:text-[32px]">Top Rated Sneakers</h1>
         <p className="text-center text-[10px] sm:text-[20px] text-[#585757]">Get upto 20% Off on Mens Casual Sneakers</p>
@@ -206,7 +277,7 @@ const Home = () => {
         <div className="w-full mx-auto p-4 my-5">
           <h1 className="text-center font-semibold text-[22px] md:text-[32px]">Grab Month end Sale</h1>
           <p className="text-center text-[10px] sm:text-[20px] text-[#585757]">Get big discounts on month end sneaker sale</p>
-          <OfferBanner/>
+          <OfferBanner />
         </div>
 
         <div className="w-full mx-auto p-4 my-5">
@@ -263,10 +334,13 @@ const Home = () => {
           </Swiper>
         </div>
 
-        <div className="w-full mx-auto p-4 my-5">
-          <h1 className="text-center font-semibold text-[22px] md:text-[32px]">Shop by Categories</h1>
-          <p className="text-center text-[10px] sm:text-[20px] text-[#585757]">Shop your Favourite sneakers with categories</p>
-          <Categories/>
+        {/* this is only seen in dekstop */}
+        <div className=" hidden md:block">
+          <div className="w-full mx-auto p-4 my-5">
+            <h1 className="text-center font-semibold text-[22px] md:text-[32px]">Shop by Categories</h1>
+            <p className="text-center text-[10px] sm:text-[20px] text-[#585757]">Shop your Favourite sneakers with categories</p>
+            <Categories />
+          </div>
         </div>
 
       </div>
