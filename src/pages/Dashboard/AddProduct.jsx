@@ -1,23 +1,49 @@
-// AddProduct.js
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 
 const AddProduct = () => {
   const [imageFiles, setImageFiles] = useState([]);
+  const [productLabels, setProductLabels] = useState([]);
+  const inputRef = useRef();
 
   // Validation schema using Yup
   const validationSchema = Yup.object().shape({
     title: Yup.string().required('Product title is required'),
     price: Yup.number().required('Price is required').positive().integer(),
-    productLabels: Yup.string().required('Product labels are required'),
-    description: Yup.string().required('Product description is required')
+    description: Yup.string().required('Product description is required'),
+    category: Yup.string().required('Category is required')
   });
+
+  // Handle label input and split by space
+  const handleLabelKeyDown = (e) => {
+    if (e.key === ' ' && e.target.value.trim()) {
+      const label = e.target.value.trim();
+      setProductLabels([...productLabels, label]);
+      inputRef.current.value = '';
+    }
+  };
+
+  // Remove a label
+  const removeLabel = (index) => {
+    setProductLabels(productLabels.filter((_, i) => i !== index));
+  };
+
+  const removeImage = (index) => {
+    setImageFiles(imageFiles.filter((_, i) => i !== index));
+  };
+
+  // Handle image drag and drop
+  const handleDrop = (e) => {
+    e.preventDefault();
+    const files = Array.from(e.dataTransfer.files);
+    setImageFiles([...imageFiles, ...files]);
+  };
 
   // Handle file change
   const handleFileChange = (e) => {
-    setImageFiles(e.target.files);
+    setImageFiles([...imageFiles, ...e.target.files])
     console.log(e.target.files)
   };
 
@@ -29,8 +55,9 @@ const AddProduct = () => {
     formData.append('title', values.title);
     formData.append('slug', values.slug || ''); // Optional field
     formData.append('price', values.price);
-    formData.append('productLabels', values.productLabels);
+    formData.append('productLabels', productLabels.join(','));
     formData.append('description', values.description);
+    formData.append('category', values.category);
 
     // Append images
     for (let i = 0; i < imageFiles.length; i++) {
@@ -48,7 +75,8 @@ const AddProduct = () => {
       );
       console.log(res.data);
       resetForm();
-      setImageFiles([]); // Clear the file input after successful submission
+      setImageFiles([]);
+      setProductLabels([]);
     } catch (error) {
       console.error('Error adding product', error);
     } finally {
@@ -66,7 +94,8 @@ const AddProduct = () => {
           slug: '',
           price: '',
           productLabels: '',
-          description: ''
+          description: '',
+          category: ''
         }}
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
@@ -136,11 +165,21 @@ const AddProduct = () => {
               >
                 Product Labels
               </label>
-              <Field
-                name="productLabels"
+              <input
                 type="text"
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                ref={inputRef}
+                onKeyDown={handleLabelKeyDown}
+                placeholder="Type and press space to add labels"
+                className="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
               />
+              <div className="flex flex-wrap mt-2">
+                {productLabels.map((label, index) => (
+                  <div key={index} className="flex items-center bg-indigo-500 text-white px-2 py-1 rounded-full mr-2 mb-2">
+                    {label}
+                    <button type="button" className="ml-2 text-white" onClick={() => removeLabel(index)}>×</button>
+                  </div>
+                ))}
+              </div>
               <ErrorMessage
                 name="productLabels"
                 component="div"
@@ -169,26 +208,41 @@ const AddProduct = () => {
               />
             </div>
 
-            {/* Image Upload */}
+            {/* Category */}
             <div>
-              <label
-                htmlFor="images"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Product Images
-              </label>
-              <input
-                type="file"
-                name="images"
-                multiple
-                onChange={handleFileChange}
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-              />
-              {imageFiles.length > 0 && (
-                <div className="mt-2 text-sm text-green-500">
-                  {imageFiles.length} image(s) selected
-                </div>
-              )}
+              <label htmlFor="category" className="block text-lg font-medium text-gray-700">Category</label>
+              <Field as="select" name="category" className="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+                <option value="">Select Category</option>
+                <option value="electronics">Casual Shoes</option>
+                <option value="fashion">Fashion Shoes</option>
+                <option value="home">Sneakers</option>
+                <option value="beauty">Party Shoes</option>
+              </Field>
+              <ErrorMessage name="category" component="div" className="text-red-500 text-sm mt-1" />
+            </div>
+
+            {/* Image Upload */}
+            <div onDrop={handleDrop} onDragOver={(e) => e.preventDefault()} className="mt-4 p-4 border-2 border-dashed rounded-md border-gray-300 hover:border-indigo-500">
+              <label htmlFor="images" className="block text-lg font-medium text-gray-700">Product Images</label>
+              <input type="file" name="images" multiple onChange={handleFileChange} className="mt-2 block w-full text-sm" />
+              <div className="flex flex-wrap mt-2">
+                {Array.from(imageFiles).map((file, index) => (
+                  <div key={index} className="relative w-24 h-24 mr-2 mb-2">
+                    <img
+                      src={URL.createObjectURL(file)}
+                      alt={`Preview ${index}`}
+                      className="w-full h-full object-cover rounded-md shadow-md"
+                    />
+                    <button
+                      type="button"
+                      className="absolute top-0 right-0 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center"
+                      onClick={() => removeImage(index)}
+                    >
+                      ×
+                    </button>
+                  </div>
+                ))}
+              </div>
             </div>
 
             {/* Submit Button */}
