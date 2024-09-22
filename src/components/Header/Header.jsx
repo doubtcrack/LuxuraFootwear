@@ -80,7 +80,7 @@ const Header = () => {
           <div className="relative flex items-center w-full">
             <CiSearch className="absolute left-3 text-gray-500" />
             <input
-              className="pl-10 text-[12px] border border-gray-300 bg-[#f9f9ec] text-black rounded-full outline-none px-3 py-1 w-full"
+              className="pl-10 text-[12px] border border-gray-300 bg-[#f9f9ec] text-black rounded-full outline-none px-3 py-2 w-full shadow-md"
               type="text"
               placeholder="Search Products Here..."
             />
