@@ -18,6 +18,7 @@ const AddProduct = () => {
   // Handle file change
   const handleFileChange = (e) => {
     setImageFiles(e.target.files);
+    console.log(e.target.files)
   };
 
   // Form submission handler
@@ -37,12 +38,11 @@ const AddProduct = () => {
     }
 
     try {
-      const res = await axios.post(
-        'http://localhost:8000/api/products',
-        formData,
+      // eslint-disable-next-line no-undef
+      const res = await axios.post(`${process.env.REACT_APP_SERVER_URL}/products`,formData,
         {
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'multipart/form-data'
           }
         }
       );
@@ -180,7 +180,6 @@ const AddProduct = () => {
               <input
                 type="file"
                 name="images"
-                accept="image/*"
                 multiple
                 onChange={handleFileChange}
                 className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
