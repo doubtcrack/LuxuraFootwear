@@ -48,7 +48,7 @@ const Productcard = ({productImage,productLabel1,productLabel2,productTitle,prod
         <div className="flex gap-2 w-full items-center justify-between mt-4">
           <span className="text-[19px] font-semibold">{productPrice}</span>
           <div className="flex gap-5 items-center">
-            <button className="px-1 sm:px-2 text-[10px] sm:text-[12px] py-1 rounded-md bg-white">Add to Cart</button>
+            <button className="px-2 sm:px-2 text-[10px] sm:text-[16px] py-2 rounded-md bg-white">Add</button>
             <FaRegHeart className=" absolute top-[25px] lg:right-[65px] right-[25px]" size={25} color="black"/>
             <FaRegShareFromSquare className=" absolute top-[75px] lg:right-[65px] right-[25px]" size={25} color="black"/>
           </div>
