@@ -13,20 +13,20 @@ import 'swiper/css/scrollbar';
 
 const imageArray = [
   {
-    id:1,
-    imgae:img1
+    id: 1,
+    imgae: img1
   },
   {
-    id:2,
-    imgae:img1
+    id: 2,
+    imgae: img1
   },
   {
-    id:3,
-    imgae:img1
+    id: 3,
+    imgae: img1
   },
   {
-    id:4,
-    imgae:img1
+    id: 4,
+    imgae: img1
   },
 ]
 
@@ -44,6 +44,8 @@ const ProductDesc = () => {
           <h1 style={{ fontFamily: 'Poppins' }} className="text-[34px] md:text-[40px] font-semibold mb-2">
                         Luxura Classic Red High-Top Sneakers - Unisex Casual Canvas Shoes
           </h1>
+          {/* Product labels here */}
+          <p className="text-gray-600">Brightens Skin | Fades Age Spots | Removes Skin Impurities | Restores Glow</p>
           <div className="mt-4">
             <div className="flex">
               {/* Render filled stars */}
@@ -55,8 +57,14 @@ const ProductDesc = () => {
             </div>
             <p style={{ fontFamily: 'Poppins' }} className="mt-4">120 Sold (4.8)</p>
           </div>
+          <div className="mt-4 flex items-end gap-4">
+            <p className="text-xl md:text-3xl font-semibold">₹<span>599</span></p>
+            <span>MRP incl. of all taxes</span>
+          </div>
           <div className="mt-4">
             <p className="text-gray-600">
+                            Step up your style with Luxuras Classic Red High-Top Sneakers. Crafted with durable canvas and a comfortable rubber sole, these unisex shoes offer timeless design and all-day comfort.
+                            Step up your style with Luxuras Classic Red High-Top Sneakers. Crafted with durable canvas and a comfortable rubber sole, these unisex shoes offer timeless design and all-day comfort.
                             Step up your style with Luxuras Classic Red High-Top Sneakers. Crafted with durable canvas and a comfortable rubber sole, these unisex shoes offer timeless design and all-day comfort.
             </p>
           </div>
@@ -64,7 +72,7 @@ const ProductDesc = () => {
           {/* Size Selection Section */}
           {/* This will come dynamically fromm the backend and the size that is not available will become grays */}
           <div className="mt-6">
-            <h2 className="text-lg font-semibold mb-2">Select Size:</h2>
+            <h2 style={{ fontFamily: 'Poppins' }} className="text-lg font-semibold mb-2">Select Size:</h2>
             <div className="flex space-x-2">
               {['6', '7', '8', '9', '10'].map(size => (
                 <div key={size} className="flex items-center justify-center w-12 h-12 rounded-full border border-gray-300 text-lg font-normal">
@@ -76,7 +84,7 @@ const ProductDesc = () => {
 
           {/* Available Colors Section */}
           <div className="mt-6">
-            <h2 className="text-lg font-semibold mb-2">Available in Colors:</h2>
+            <h2 style={{ fontFamily: 'Poppins' }} className="text-lg font-semibold mb-2">Available in Colors:</h2>
             <div className="flex space-x-2">
               <div className="w-8 h-8 bg-black rounded-full"></div>
               <div className="w-8 h-8 bg-[#e5e5e5] rounded-full"></div>
