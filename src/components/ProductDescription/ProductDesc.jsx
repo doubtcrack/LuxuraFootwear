@@ -1,7 +1,7 @@
 /* eslint-disable comma-dangle */
 import React from 'react'
 import { FaStar } from 'react-icons/fa';
-import img1 from './2.png'
+import img1 from './2-removebg-preview.png'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper/modules';
 // import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';

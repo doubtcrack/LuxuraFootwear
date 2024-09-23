@@ -73,7 +73,9 @@ const Header = () => {
             {/* User & Cart Icons for Desktop */}
             <div className="hidden lg:flex h-full items-center justify-center gap-4">
               <FaRegUser className="cursor-pointer" size={26} />
-              <CgShoppingCart className="cursor-pointer" size={30} />
+              <Link to={'/cart'}>
+                <CgShoppingCart className="cursor-pointer" size={30} />
+              </Link>
             </div>
           </div>
         </div>
