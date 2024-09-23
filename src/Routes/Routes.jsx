@@ -5,6 +5,7 @@ import Home from '../pages/Home';
 import Dashboard from '../pages/Dashboard/Dashboard';
 import AdminLogin from '../pages/Dashboard/AdminLogin';
 import Footer from '../components/Footer/Footer';
+import ProductDesc from '../components/ProductDescription/ProductDesc';
 
 const Routess = () => {
   return (
@@ -17,6 +18,16 @@ const Routess = () => {
             <>
               <Header />
               <Home />
+              <Footer/>
+            </>
+          }
+        />
+        <Route
+          path="/product-description"
+          element={
+            <>
+              <Header />
+              <ProductDesc/>
               <Footer/>
             </>
           }

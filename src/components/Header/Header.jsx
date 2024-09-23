@@ -5,6 +5,7 @@ import { FaRegUser } from 'react-icons/fa';
 import { CgShoppingCart } from 'react-icons/cg';
 import { FiMenu, FiX } from 'react-icons/fi'; // For hamburger menu icon
 import Logo from './logo.png'; // Update with your logo path
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -39,9 +40,11 @@ const Header = () => {
           {/* Center Menus and Search Box for Desktop */}
           <div className="hidden lg:flex items-center justify-between w-full">
             {/* Logo */}
-            <div>
-              <img className="h-[60px] w-[60px] sm:h-[120px] sm:w-[120px]" src={Logo} alt="Luxura Logo" />
-            </div>
+            <Link to={'/'}>
+              <div>
+                <img className="h-[60px] w-[60px] sm:h-[120px] sm:w-[120px]" src={Logo} alt="Luxura Logo" />
+              </div>
+            </Link>
 
             {/* Center Menus for Desktop */}
             <ul className="hidden lg:flex items-center justify-center gap-5">
