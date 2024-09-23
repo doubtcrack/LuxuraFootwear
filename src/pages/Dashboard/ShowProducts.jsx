@@ -21,7 +21,7 @@ const ShowProducts = () => {
   useEffect(() => {
     const fetchAllProducts = async () => {
       try {
-        const result = await axios.get(`${process.env.REACT_APP_SERVER_URL}/products`)
+        const result = await axios.get('https://luxura-api.vercel.app/api/products')
         console.log(result.data)
         setAllProducts(result.data)
         return result

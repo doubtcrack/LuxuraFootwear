@@ -5,6 +5,8 @@ import Home from '../pages/Home';
 import Dashboard from '../pages/Dashboard/Dashboard';
 import AdminLogin from '../pages/Dashboard/AdminLogin';
 import Footer from '../components/Footer/Footer';
+import ProductDesc from '../components/ProductDescription/ProductDesc';
+import Cart from '../pages/Cart/Cart';
 
 const Routess = () => {
   return (
@@ -17,6 +19,26 @@ const Routess = () => {
             <>
               <Header />
               <Home />
+              <Footer/>
+            </>
+          }
+        />
+        <Route
+          path="/product-description"
+          element={
+            <>
+              <Header />
+              <ProductDesc/>
+              <Footer/>
+            </>
+          }
+        />
+        <Route
+          path="/cart"
+          element={
+            <>
+              <Header />
+              <Cart/>
               <Footer/>
             </>
           }

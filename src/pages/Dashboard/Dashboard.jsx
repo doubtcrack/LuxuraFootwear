@@ -7,7 +7,7 @@ const Dashboard = () => {
   const [activeTab, setActiveTab] = useState('add-product');
 
   return (
-    <div className="flex min-h-screen">
+    <div className="flex h-screen overflow-scroll">
       {/* Sidebar */}
       <aside className="w-1/4 bg-gray-800 text-white h-screen p-5">
         <h1 className="text-2xl font-bold mb-6">Menu</h1>
