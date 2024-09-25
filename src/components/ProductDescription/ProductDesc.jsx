@@ -1,33 +1,56 @@
 /* eslint-disable comma-dangle */
 import React from 'react'
 import { FaStar } from 'react-icons/fa';
-import img1 from './2-removebg-preview.png'
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper/modules';
-// import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
-import 'swiper/css';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import 'swiper/css/scrollbar';
+import img1 from '../ProductCard/2.png'
+import Carousel from 'react-multi-carousel';
 
-const imageArray = [
+// import { Swiper, SwiperSlide } from 'swiper/react';
+// import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper/modules';
+// import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
+// import 'swiper/css';
+// import 'swiper/css';
+// import 'swiper/css/navigation';
+// import 'swiper/css/pagination';
+// import 'swiper/css/scrollbar';
+
+const responsive = {
+  superLargeDesktop: {
+    // the naming can be any, depends on you.
+    breakpoint: { max: 4000, min: 3000 },
+    items: 1
+  },
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 1
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 1
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 1
+  }
+};
+
+const tempData = [
   {
     id: 1,
-    imgae: img1
+    image: img1
   },
   {
     id: 2,
-    imgae: img1
+    image: img1
   },
   {
     id: 3,
-    imgae: img1
+    image: img1
   },
   {
     id: 4,
-    imgae: img1
+    image: img1
   },
+
 ]
 
 const ProductDesc = () => {
@@ -36,13 +59,31 @@ const ProductDesc = () => {
       <div className="flex flex-col md:flex-row gap-4">
         {/* Image Carousel */}
         <div className="flex-1">
+          <Carousel
+            loop={false}
+            responsive={responsive}
 
+            // customButtonGroup={<ButtonGroup image={data?.image} />}
+            className="w-100 text-center"
+          >
+            {
+              tempData.map((item, index) => {
+                return (
+                  <div key={index} className="">
+                    <img className="max-w-[70%] mx-auto" src={item.image} alt="Product-image-caraousel" />
+                  </div>
+                )
+              })
+            }
+
+          </Carousel>
+          <img className="max-w-[70%] mx-auto" src={img1} alt="Product-image-caraousel" />
         </div>
 
         {/* Product Details */}
         <div className="flex-1">
-          <h1 style={{ fontFamily: 'Poppins' }} className="text-[34px] md:text-[40px] font-semibold mb-2">
-                        Luxura Classic Red High-Top Sneakers - Unisex Casual Canvas Shoes
+          <h1 style={{ fontFamily: 'Poppins' }} className="text-[26px] md:text-[40px] font-semibold mb-2">
+            Luxura Classic Red High-Top Sneakers - Unisex Casual Canvas Shoes
           </h1>
           {/* Product labels here */}
           <p className="text-gray-600">Brightens Skin | Fades Age Spots | Removes Skin Impurities | Restores Glow</p>
@@ -63,9 +104,9 @@ const ProductDesc = () => {
           </div>
           <div className="mt-4">
             <p className="text-gray-600">
-                            Step up your style with Luxuras Classic Red High-Top Sneakers. Crafted with durable canvas and a comfortable rubber sole, these unisex shoes offer timeless design and all-day comfort.
-                            Step up your style with Luxuras Classic Red High-Top Sneakers. Crafted with durable canvas and a comfortable rubber sole, these unisex shoes offer timeless design and all-day comfort.
-                            Step up your style with Luxuras Classic Red High-Top Sneakers. Crafted with durable canvas and a comfortable rubber sole, these unisex shoes offer timeless design and all-day comfort.
+              Step up your style with Luxuras Classic Red High-Top Sneakers. Crafted with durable canvas and a comfortable rubber sole, these unisex shoes offer timeless design and all-day comfort.
+              Step up your style with Luxuras Classic Red High-Top Sneakers. Crafted with durable canvas and a comfortable rubber sole, these unisex shoes offer timeless design and all-day comfort.
+              Step up your style with Luxuras Classic Red High-Top Sneakers. Crafted with durable canvas and a comfortable rubber sole, these unisex shoes offer timeless design and all-day comfort.
             </p>
           </div>
 
