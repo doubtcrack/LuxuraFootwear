@@ -48,7 +48,7 @@ const Header = () => {
 
             {/* Center Menus for Desktop */}
             <ul className="hidden lg:flex items-center justify-center gap-5">
-              <li>Mens</li>
+              <Link to={'/mens'}>Mens</Link>
               <li>Womens</li>
               <li>Kids</li>
               <li>Sports</li>
@@ -103,7 +103,7 @@ const Header = () => {
               <FiX size={20} />
             </button>
             <ul className="flex flex-col gap-5">
-              <li>Mens</li>
+              <Link to={'/mens'}>Mens</Link>
               <li>Womens</li>
               <li>Kids</li>
               <li>Sports</li>

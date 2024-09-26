@@ -7,6 +7,7 @@ import AdminLogin from '../pages/Dashboard/AdminLogin';
 import Footer from '../components/Footer/Footer';
 import ProductDesc from '../components/ProductDescription/ProductDesc';
 import Cart from '../pages/Cart/Cart';
+import Mens from '../pages/Mens';
 
 const Routess = () => {
   return (
@@ -39,6 +40,16 @@ const Routess = () => {
             <>
               <Header />
               <Cart/>
+              <Footer/>
+            </>
+          }
+        />
+        <Route
+          path="/mens"
+          element={
+            <>
+              <Header />
+              <Mens/>
               <Footer/>
             </>
           }
