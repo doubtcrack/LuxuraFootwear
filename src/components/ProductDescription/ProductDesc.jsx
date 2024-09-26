@@ -59,7 +59,7 @@ const ProductDesc = () => {
       <div className="flex flex-col md:flex-row gap-4">
         {/* Image Carousel */}
         <div className="flex-1">
-          <Carousel
+          {/* <Carousel
             loop={false}
             responsive={responsive}
 
@@ -76,7 +76,7 @@ const ProductDesc = () => {
               })
             }
 
-          </Carousel>
+          </Carousel> */}
           <img className="max-w-[70%] mx-auto" src={img1} alt="Product-image-caraousel" />
         </div>
 
